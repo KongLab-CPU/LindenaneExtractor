@@ -165,7 +165,6 @@ with mgf.read(input_mgf) as spectra:
                         Dimer_Score = Dimer_Score + 1
                     if 467.1823 <= fragment_ion <= 467.1883:
                         Dimer_Score = Dimer_Score + 1
-
                     if 257.1142 <= fragment_ion <= 257.1202:
                         Dimer_Score = Dimer_Score + 1
                     if 275.1248 <= fragment_ion <= 275.1308:
@@ -283,6 +282,8 @@ Trimer_x = []
 Trimer_y = []
 Other_x = []
 Other_y = []
+plt_lable = []
+
 for o, p in enumerate(plt_index):
     if p == 0:
         Monomer_x.append(data.loc[o]['row retention time'])
@@ -298,10 +299,17 @@ for o, p in enumerate(plt_index):
         Other_y.append(data.loc[o]['row m/z'])
 
 plt.figure(figsize=(10, 18), dpi=600)
-plt.scatter(Monomer_x, Monomer_y, marker='o', s=100)
-plt.scatter(Dimer_x, Dimer_y, marker='o', s=100)
-plt.scatter(Trimer_x, Trimer_y, marker='o', s=100)
+if not Monomer_x == []:
+    plt.scatter(Monomer_x, Monomer_y, marker='o', s=100, color='dodgerblue')
+    plt_lable.append('Monomer')
+if not Dimer_x == []:
+    plt.scatter(Dimer_x, Dimer_y, marker='o', s=100, color='darkorange')
+    plt_lable.append('Dimer')
+if not Trimer_x == []:
+    plt.scatter(Trimer_x, Trimer_y, marker='o', s=100, color='green')
+    plt_lable.append('Trimer')
 plt.scatter(Other_x, Other_y, marker='o', zorder=0, color='darkgray')
+plt_lable.append('Other')
 plt.xlabel('Retention time  (min)', fontsize=20)
 plt.ylabel('m/z', fontsize=20, style='italic')
 plt.tick_params(labelsize=20)
@@ -326,5 +334,7 @@ adjust_text(new_texts,
             only_move={'text': 'xy'},
             arrowprops=dict(arrowstyle='-', color='red'),
             save_steps=False)
-plt.legend(labels=['Monomer', 'Dimer', 'Trimer', 'Other'])
+
+plt.legend(labels=plt_lable)
+
 plt.savefig('target.jpg')

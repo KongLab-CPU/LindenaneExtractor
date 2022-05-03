@@ -1,6 +1,6 @@
 from pyteomics import mgf
 
-input_mgf = 'C:/Users/Li/Desktop/library/MONA.mgf'  # The path of input mgf file (test fot public database)
+input_mgf = 'C:/Users/Li/Desktop/标准品图谱/数据库/MONA.mgf'  # The path of input mgf file (test fot public database)
 
 Monomer_Standard = 0
 Dimer_Standard = 0
