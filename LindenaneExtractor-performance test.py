@@ -1,6 +1,6 @@
 from pyteomics import mgf
 
-input_mgf = 'C:/Users/Li/Desktop/标准品图谱/数据库/MONA.mgf'  # The path of input mgf file (test fot public database)
+input_mgf = 'C:/Users/Li/Desktop/dataset/1.mgf'  # The path of input mgf file (test fot public database)
 
 Monomer_Standard = 0
 Dimer_Standard = 0
@@ -13,9 +13,9 @@ with mgf.read(input_mgf) as spectra:
     for i, spectrum in enumerate(spectra):
         if spectrum['m/z array'].size > 0:
             library += 1
-            intensity_max = max(spectrum['intensity array'])  # 归一化
-            intensity_min = min(spectrum['intensity array'])  # 归一化
-            x = (spectrum['intensity array'] - intensity_min) / (intensity_max - intensity_min)  # 归一化
+            intensity_max = max(spectrum['intensity array'])
+            intensity_min = min(spectrum['intensity array'])
+            x = (spectrum['intensity array'] - intensity_min) / (intensity_max - intensity_min)
             if 229 <= spectrum['params']['pepmass'][0] <= 520:
                 for y, fragment_ion in enumerate(spectrum['m/z array']):
                     if 155.0825 <= fragment_ion <= 155.0885:
@@ -59,9 +59,10 @@ with mgf.read(input_mgf) as spectra:
                 if Monomer_Standard >= 6:
                     print('monoer')
                     total=total+1
-                    if Eudesmane > 0 or lindenane > 0:
-                        if lindenane < Eudesmane:
-                            total = total - 1
+                    if 229 <= spectrum['params']['pepmass'][0] <= 320:
+                        if Eudesmane > 0 or lindenane > 0:
+                            if lindenane < Eudesmane:
+                                total = total - 1
                 Monomer_Standard = 0
 
             if 500 < spectrum['params']['pepmass'][0] < 820:
