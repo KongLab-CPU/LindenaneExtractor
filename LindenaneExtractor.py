@@ -137,14 +137,15 @@ with mgf.read(input_mgf) as spectra:
                 sesquiterpenoids in Sarcandra. These compounds displayed the same fragmentation pathway with that of 
                 LSMs. By comparing their fragment ions, we discovered that the ion intensity of m/z 155 was always 
                 higher that of m/z 157 in LSMs, however, it was opposite in eudesmane. '''
-                if Eudesmane > 0 or lindenane > 0:
-                    if lindenane < Eudesmane:
-                        target.pop(-1)
-                        Classification.pop(-1)
-                        Subclass.pop(-1)
-                        plt_index.pop(-1)
-                        plt_index.append(3)
-                        Identification.pop(-1)
+                if 229 <= spectrum['params']['pepmass'][0] <= 320:
+                    if Eudesmane > 0 or lindenane > 0:
+                        if lindenane < Eudesmane:
+                            target.pop(-1)
+                            Classification.pop(-1)
+                            Subclass.pop(-1)
+                            plt_index.pop(-1)
+                            plt_index.append(3)
+                            Identification.pop(-1)
             else:
                 plt_index.append(3)
             Monomer_Score = 0
