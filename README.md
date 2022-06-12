@@ -1,2 +1,5 @@
-# LindenaneExtractor
-The source code of LindenaneExtractor
+# Introduction
+### Molecular networking has been widely used for natural product discovery. The commonly used analytical methods mainly focus on mining the molecules in the clusters, but the nonclustered nodes have always been ignored. To explore the nonclustered nodes, we propose a new strategy. An extractor software is used to extract the molecules we are interested in (or filter the non-target compounds) from the raw data processed by MZmine 2. The filtered the mgf and csv files are further submitted to GNPS platform to construct molecular networks. We can analyze the nonclustered nodes in the refined molecular networks directly to discover the target molecules with special skeleton.
+### And now we upload a **NPExtractor (Natural Product Extractor)** for the analysis of other natural products. This tool is written in Python and has been packaged as a .exe tool. For detailed instructions, please refer to the user manual. 
+# Citation
+### Yongyi Li, Shuai Zhao, Yunpeng Sun, Jixin Li, Yongyue Wang, Wenjun Xu, Jun Luo, Lingyi Kong. Automatic MS/MS data mining strategy for target natural products discovery: a case of lindenane sesquiterpenoids. Analytical Chemistry (DOI: 10.1021/acs.analchem.2c01559).
